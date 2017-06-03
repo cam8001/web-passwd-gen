@@ -1,0 +1,30 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/javascript">
+  // Generate a list of words files.
+  // Our build script should have generated 20 files with the naming format
+  // words-ab, words-ac, etc.
+  var n = 'a'.charCodeAt();
+  var words_files = Array.from(new Array(20), (x, i) => 'words-a' + String.fromCharCode(n++))
+  console.log(words_files);
+
+  get_word(99, 'words/words-aa');
+
+  </script>
+</head>
+
+<body>
+  <h1>Hi</h1>
+</body>
+</html>
