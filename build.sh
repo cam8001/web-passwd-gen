@@ -6,7 +6,7 @@ function to_json() {
 function file_to_json() {
   FILENAME=$1;
   NEWFILENAME="$FILENAME.json";
-  FILE_PREFIX="const word_list = ";
+  FILE_PREFIX="window.word_list = ";
   FILE_SUFFIX=";";
   cat $FILENAME | to_json > $NEWFILENAME;
   echo $FILE_PREFIX | cat - $NEWFILENAME > temp && mv temp $NEWFILENAME
@@ -39,6 +39,6 @@ do
 done;
 
 # Cleanup
-find . -not -name  "*json" -exec rm {} \;
+find . -not -name "*json" -not -name '.' -not -name '..' -exec rm {} \;
 cd ..
 rm words.shuffled words.tmp words.txt
