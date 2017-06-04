@@ -16,3 +16,4 @@ The plan is to publish this to https://passwordgen.camerontod.com/, and allow an
   * @todo move Javascript into its own file.
   * @todo Implement gulp to: lint code, check JSDoc compliance, replace tokens automatically (ga id, number of words files), and collate Javascript into index.html for deployment.
   * @todo Add GDocs tag.
+  8 @todo Styling and UX
