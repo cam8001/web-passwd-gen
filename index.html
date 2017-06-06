@@ -25,7 +25,7 @@
 
   // What to do after the document loads.
   var onReadyFunction = function() {
-    var generateLink = document.body.querySelector('h1 a');
+    var generateLink = document.body.querySelector('#regenerate');
     generateLink.onclick = function(e) {
       PasswordGenerator(callback);
       e.preventDefault();
@@ -45,12 +45,14 @@
   ready(onReadyFunction);
 
   </script>
+  <link type='text/css' rel='stylesheet' href='css/styles.css' />
 </head>
 
 <body>
-  <h1>Hi <a href="#">Regenerate Password</a></h1>
-  <div id='output_target'>
+  <div id="content">
+    <h1>Secure passwords on demand</h1>
+    <button id='regenerate'>Regenerate</button>
+    <div id='output_target'></div>
   </div>
-
 </body>
 </html>
