@@ -7,7 +7,7 @@
   <title>Secure Password Generator</title>
   <meta name="description" content="Generates passwords that score highly in zxcvbn">
   <meta name="author" content="Cameron Tod">
-  <link type='text/css' rel='stylesheet' href='css/styles.css' />
+  <link type='text/css' rel='stylesheet' href='css/styles.min.css' />
   <script type="text/javascript" src="src/js/PasswordGenerator.js"></script>
   <script type="text/javascript">
   /**
@@ -29,6 +29,11 @@
     var generateLink = document.body.querySelector('#regenerate');
     generateLink.onclick = function(e) {
       PasswordGenerator(callback);
+      console.log(navigator.platform);
+      if (navigator.platform === 'MacIntel') {
+        console.log('hi');
+        document.getElementById('mac-script-link').style.display = 'block';
+      }
       e.preventDefault();
     }
     generateLink.click();
@@ -45,6 +50,7 @@
   }
   ready(onReadyFunction);
 
+
   </script>
 </head>
 
@@ -53,6 +59,8 @@
     <h1>Secure passwords on demand</h1>
     <button id='regenerate'>Regenerate</button>
     <div id='output_target'></div>
+    <div id="mac-script-link">
+    <p>On a Mac? You can use this <a href="https://gist.github.com/cam8001/75daa3cec6e45428f8e6497c907365e9">password generator script</a> too.</p>
   </div>
 </body>
 </html>
