@@ -33,7 +33,6 @@ function PasswordGenerator(callback) {
   // If no callback is defined, just set the password on the object.
   if (typeof callback === 'undefined') {
     //this.callback = function(value) {console.log('Default callback: ' + value)}
-    console.log(typeof this.setPassword);
     callback = this.setPassword;
   }
   this.callback = callback;

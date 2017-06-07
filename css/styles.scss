@@ -33,6 +33,14 @@ button {
   transition: background-color 300ms ease-out;
 }
 
+#password_strength {
+  margin-top: 2em;
+
+  a {
+    margin-left: 1em;
+  }
+}
+
 #mac-script-link {
   display: none;
 }
