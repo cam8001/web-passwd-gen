@@ -52,10 +52,18 @@ function PasswordGenerator(callback) {
   }
 
   /**
+  * Capatilize the first character in a string.
+  * @param {string} String to alter.
+  */
+  this.capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  /**
   * Generate a password.
   */
   this.generatePassword = function(word_list) {
-    return this.randomWord(word_list) + Math.randomRange(1,99) + '-' + this.randomWord(word_list) + Math.randomRange(1,99);
+    return this.capatalizeFirstLetter(this.randomWord(word_list)) + Math.randomRange(1,99) + '-' + this.randomWord(word_list) + Math.randomRange(1,99);
   }
 
   /**
