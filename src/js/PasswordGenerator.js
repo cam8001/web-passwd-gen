@@ -63,7 +63,7 @@ function PasswordGenerator(callback) {
   * Generate a password.
   */
   this.generatePassword = function(word_list) {
-    return this.capatalizeFirstLetter(this.randomWord(word_list)) + Math.randomRange(1,99) + '-' + this.randomWord(word_list) + Math.randomRange(1,99);
+    return this.capitalizeFirstLetter(this.randomWord(word_list)) + Math.randomRange(1,99) + '-' + this.randomWord(word_list) + Math.randomRange(1,99);
   }
 
   /**
