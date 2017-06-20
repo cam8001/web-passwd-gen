@@ -55,7 +55,7 @@ function PasswordGenerator(callback) {
   * Capatilize the first character in a string.
   * @param {string} String to alter.
   */
-  this.capitalizeFirstLetter(string) {
+  this.capitalizeFirstLetter = function(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
