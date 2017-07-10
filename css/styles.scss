@@ -1,6 +1,8 @@
 $button-background-color: #008CBA;
 $button-border-color: #007095;
 
+@import "primer-tooltips/index.scss";
+
 body {
   background-color: #eee;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif
@@ -14,11 +16,7 @@ body {
   margin: 0 auto;
   text-align: center; }
 
-#output_target {
-  margin-top: 2em;
-}
-
-button {
+button#regenerate {
   background-color: $button-background-color;
   border-color: $button-border-color;
   border-radius: 0;
@@ -31,6 +29,29 @@ button {
   position: relative;
   text-align: center;
   transition: background-color 300ms ease-out;
+}
+
+div#password-container {
+  border: 1px solid #ccc;
+  display: table;
+  margin: 1em auto;
+  padding: 1em;
+}
+
+#output_target {
+  display: table-cell;
+  margin-top: 2em;
+}
+
+#clipboard-btn {
+  background-color: transparent;
+  display: table-cell;
+  margin-left: 1em;
+   img {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+  }
 }
 
 #password_strength {

@@ -8,6 +8,7 @@
   <meta name="description" content="Generates passwords that score highly in zxcvbn">
   <meta name="author" content="Cameron Tod">
   <link type='text/css' rel='stylesheet' href='css/styles.min.css' />
+
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -17,6 +18,16 @@
     ga('create', 'UA-10888005-3', 'auto');
     ga('send', 'pageview');
   </script>
+
+  <style type='text/css'>
+    .highlighted {
+      background-color: red;
+    }
+    .highlighted-fade-out {
+      background-color: none;
+    }
+  </style>
+
   <script type="text/javascript" src="src/js/PasswordGenerator.js"></script>
   <script type="text/javascript" src="src/js/PasswordStrength.js"></script>
   <script type="text/javascript">
@@ -25,7 +36,6 @@
   * @todo Implement gulp to: lint code, check JSDoc compliance, replace tokens
   *       automatically (ga id, number of words files), and collate Javascript
           into index.html for deployment.
-  * @todo Add GA tag.
   */
   // Function to pass to the PasswordGenerator.
   var callback = function(result) {
@@ -44,6 +54,12 @@
       e.preventDefault();
     }
     generateLink.click();
+
+    var clipboard = new Clipboard('#clipboard-btn');
+    clipboard.on('success', function(e) {
+      e.clearSelection();
+      showTooltip(e.trigger, 'Copied!');
+    });
   };
 
   // Run code on document.ready.
@@ -57,15 +73,50 @@
   }
   ready(onReadyFunction);
 
+  var btns = document.querySelectorAll('#clipboard-btn');
+  for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('mouseleave', clearTooltip);
+      btns[i].addEventListener('blur', clearTooltip);
+  }
+
+  function clearTooltip(e) {
+      e.currentTarget.setAttribute('class', 'btn');
+      e.currentTarget.removeAttribute('aria-label');
+  }
+
+  function showTooltip(elem, msg) {
+      elem.setAttribute('class', 'btn tooltipped tooltipped-s');
+      elem.setAttribute('aria-label', msg);
+  }
+
+  function fallbackMessage(action) {
+      var actionMsg = '';
+      var actionKey = (action === 'cut' ? 'X' : 'C');
+      if (/iPhone|iPad/i.test(navigator.userAgent)) {
+          actionMsg = 'No support :(';
+      } else if (/Mac/i.test(navigator.userAgent)) {
+          actionMsg = 'Press ⌘-' + actionKey + ' to ' + action;
+      } else {
+          actionMsg = 'Press Ctrl-' + actionKey + ' to ' + action;
+      }
+      return actionMsg;
+  }
+
 
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 </head>
 
 <body>
   <div id="content">
     <h1>Secure passwords on demand</h1>
     <button id='regenerate'>Regenerate</button>
-    <div id='output_target'></div>
+    <div id="password-container">
+      <div id='output_target'></div>
+      <button id="clipboard-btn" data-clipboard-target="#output_target">
+        <img src="https://clipboardjs.com/assets/images/clippy.svg" alt="Copy to clipboard" />
+      </button>
+    </div>
     <div id='password_strength'></div>
     <div id="mac-script-link">
       <p>On a Mac? You can use this <a href="https://gist.github.com/cam8001/75daa3cec6e45428f8e6497c907365e9">password generator script</a> too.</p>
