@@ -7,7 +7,7 @@ function PasswordStrength() {
     let password = document.getElementById('output_target').textContent;
     password_strength = zxcvbn(password);
     // password_strength.crack_times_display.online_no_throttling_10_per_second;
-    console.log(password_strength);
+    //console.log(password_strength);
   }
 
   this.displayStrength = function() {
