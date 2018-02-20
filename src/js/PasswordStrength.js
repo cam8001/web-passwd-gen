@@ -12,7 +12,7 @@ function PasswordStrength() {
 
   this.displayStrength = function() {
     var zxcvbn_demo_link = document.createElement('a');
-    zxcvbn_demo_link.setAttribute('href', 'https://dl.dropboxusercontent.com/u/209/zxcvbn/test/index.html');
+    zxcvbn_demo_link.setAttribute('href', 'https://lowe.github.io/tryzxcvbn/');
     zxcvbn_demo_link.innerHTML = 'Why?';
 
     var password_strength_output = document.querySelector(display_selector);
